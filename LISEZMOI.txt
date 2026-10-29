@@ -1,0 +1,6 @@
+1. Créez un compte gratuit sur github.com, puis un nouveau dépôt (New repository).
+2. Cliquez "uploading an existing file" et déposez TOUT le contenu de ce dossier
+   (y compris le dossier .github, www, package.json, capacitor.config.json).
+3. Onglet "Actions" > "Build APK" > "Run workflow". Attendez ~5 minutes.
+4. Ouvrez l'exécution terminée > "Artifacts" > téléchargez collecte-pro-apk (zip), extrayez app-debug.apk.
+5. Envoyez l'APK sur le téléphone, ouvrez-le et autorisez "sources inconnues".
