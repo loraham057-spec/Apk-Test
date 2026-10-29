@@ -39,6 +39,23 @@ textarea{min-height:70px}
 .tr{height:14px;background:var(--bg);border-radius:8px;overflow:hidden}.fl{height:100%;background:var(--ac);border-radius:8px}
 table{border-collapse:collapse;width:100%;font-size:13px}th,td{padding:7px 9px;border-bottom:1px solid var(--bd);text-align:left;vertical-align:top}th{background:var(--ac);color:#fff;white-space:nowrap}
 .sw{width:26px;height:26px;border-radius:50%;border:2px solid var(--bd);cursor:pointer;padding:0}
+<<<<<<< HEAD
+=======
+:root{--kb:#1e88e5}
+.top{background:var(--kb);color:#fff;margin:-14px -14px 12px;padding:12px 14px;box-shadow:0 2px 6px #0004}
+.top .b{background:transparent;color:#fff;border:0;font-size:20px;padding:4px 8px}
+.bar0{background:var(--kb);color:#fff;margin:-14px -14px 0;padding:16px;box-shadow:0 2px 6px #0004;font-size:20px;font-weight:600}
+.mi{display:flex;align-items:center;gap:14px;background:var(--cd);padding:14px 16px;border:0;border-bottom:1px solid var(--bd);cursor:pointer;width:100%;color:var(--tx);font:inherit;text-align:left;margin:0 -14px;width:calc(100% + 28px)}
+.mi i{width:42px;height:42px;border-radius:50%;background:var(--kb);color:#fff;display:grid;place-items:center;font-style:normal;font-size:20px}
+.mi span{flex:1;font-weight:600}.mi em{color:var(--mu);font-style:normal;font-size:12px;display:block;font-weight:400}
+.c{border-radius:8px;box-shadow:0 1px 2px #0002}
+.bp{background:var(--kb);border-color:var(--kb)}
+.gr{display:grid;grid-template-columns:1fr 1fr;gap:10px}.gr .full{grid-column:1/-1}
+@media(max-width:560px){.gr{grid-template-columns:1fr}}
+.dn{width:110px;height:110px;border-radius:50%;flex:none;position:relative}
+.dn:after{content:"";position:absolute;inset:26px;background:var(--cd);border-radius:50%}
+.lg{font-size:12px}.lg span{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}
+>>>>>>> 8aebc0d (Mise a jour du projet et de l'application Android)
 #modal{position:fixed;inset:0;background:#000a;display:none;align-items:center;justify-content:center;padding:16px;z-index:20}
 #modal>div{background:var(--cd);border-radius:16px;padding:14px;width:100%;max-width:560px}
 #toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#111827;color:#fff;padding:10px 16px;border-radius:99px;display:none;z-index:30}
@@ -61,11 +78,19 @@ mk('section','4. Description de l’échantillon'),mk('selectN','Maladie concern
 mk('section','5. Impact'),mk('selectN','Impact constaté','Aucun impact|Délai dépassé|Retard de transmission au labo|Risque de rejet|Altération de l’échantillon|Perte de traçabilité|Données incomplètes|Exposition du personnel|Risque de contamination|Rupture de la chaîne du froid|Nouveau prélèvement nécessaire|Autre'),mk('select1','Vérification avec fiche papier / registre','Oui|Non'),
 mk('section','6. Notification et suivi'),mk('select1','Partagé sur le groupe WhatsApp','Oui|Non'),mk('select1','Présenté à la réunion hebdomadaire','Oui|Non'),
 mk('section','7–8. Mesures et clôture'),mk('textarea','Mesures immédiates prises'),mk('textarea','Actions correctives / préventives'),mk('select1','Statut','Ouvert|En cours|Résolu',1)]});save()}
+<<<<<<< HEAD
 function go(p,f){V.p=p;V.f=f;D={};render();scrollTo(0,0)}
 function render(){const f=F(V.f);document.documentElement.style.setProperty('--ac',f?f.color:'#0f766e');
 $('#app').innerHTML=({home,bld,fill,res})[V.p](f)}
 const back=t=>`<div class="top"><button class="b" onclick="go('home')">←</button><b>${esc(t)}</b></div>`;
 function home(){return `<div class="hero"><h1>Collecte Pro</h1><div class="mu">Créez ou importez vos enquêtes, collectez hors ligne, analysez avec un rendu sur mesure.</div>
+=======
+function go(p,f){V.p=p;V.f=f;V.ed=false;D={};render();scrollTo(0,0)}
+function render(){const f=F(V.f);document.documentElement.style.setProperty('--ac',f?f.color:'#0f766e');
+$('#app').innerHTML=({home,bld,fill,res})[V.p](f)}
+const back=t=>`<div class="top"><button class="b" onclick="go('home')">←</button><b>${esc(t)}</b></div>`;
+function home(){return `<div class="bar0">Collecte Pro</div><label class="mi"><i>⬆</i><span>Importer une enquête<em>XLSForm, CSV ou JSON</em></span><input type="file" hidden accept=".json,.csv,.xlsx,.xls" onchange="imp(this)"></label><button class="mi" onclick="newForm()"><i>＋</i><span>Nouveau formulaire<em>Créer une enquête</em></span></button><div class="mu" style="padding:14px 2px 0">FORMULAIRES (${S.forms.length})</div><div style="display:none">
+>>>>>>> 8aebc0d (Mise a jour du projet et de l'application Android)
 <div class="row"><button class="b" onclick="newForm()">＋ Nouveau formulaire</button><label class="b">⬆ Importer (XLSForm, CSV, JSON)<input type="file" hidden accept=".json,.csv,.xlsx,.xls" onchange="imp(this)"></label></div></div>`+
 S.forms.map(f=>{const n=S.subs.filter(s=>s.fid==f.id).length;return `<div class="c" style="border-left:6px solid ${f.color}"><b>${esc(f.title)}</b><div class="mu">${f.fields.filter(x=>x.type!='section').length} questions · ${n} réponse(s)</div>
 <div class="row"><button class="b bp" onclick="go('fill','${f.id}')">Collecter</button><button class="b" onclick="go('res','${f.id}')">Résultats</button><button class="b" onclick="go('bld','${f.id}')">Modifier</button><button class="b" onclick="exFormDef('${f.id}')">Modèle</button><button class="b bd" onclick="delForm('${f.id}')">Suppr.</button></div></div>`}).join('')+
@@ -96,14 +121,24 @@ function gps(id){if(!navigator.geolocation)return toast('GPS indisponible');navi
 function empty(v){return v==null||v===''||(Array.isArray(v)&&!v.length)}
 function submit(){const f=F(V.f),m=f.fields.find(x=>x.req&&empty(D[x.id]));if(m)return alert('Champ obligatoire : '+m.label);S.subs.push({id:uid(),fid:f.id,ts:Date.now(),d:D});save();toast('Réponse enregistrée ✓');go('res',f.id)}
 const val=(x,d)=>{const v=d[x.id];return Array.isArray(v)?v.join('; '):(v==null?'':v)};
+<<<<<<< HEAD
 function res(f){const rows=S.subs.filter(s=>s.fid==f.id).sort((a,b)=>b.ts-a.ts),q=f.fields.filter(x=>x.type!='section');
+=======
+function res(f){const rows=S.subs.filter(s=>s.fid==f.id&&(!V.rg||s.ts>Date.now()-V.rg*864e5)).sort((a,b)=>b.ts-a.ts),q=f.fields.filter(x=>x.type!='section');
+>>>>>>> 8aebc0d (Mise a jour du projet et de l'application Android)
 f.v=f.v||{m:'dash',cols:q.slice(0,4).map(x=>x.id)};const m=f.v.m,today=new Date().toDateString();
 const sw=['#0f766e','#2563eb','#7c3aed','#db2777','#ea580c','#ca8a04','#475569'];
 let h=back('Résultats – '+f.title)+`<div class="seg">${[['dash','Tableau de bord'],['table','Tableau'],['cards','Fiches']].map(([k,l])=>`<button class="${m==k?'on':''}" onclick="vm('${k}')">${l}</button>`).join('')}</div>
 <div class="row"><span class="mu">Thème</span>${sw.map(c=>`<button class="sw" style="background:${c}" onclick="F(V.f).color='${c}';save();render()"></button>`).join('')}</div>
+<<<<<<< HEAD
 <div class="row"><button class="b" onclick="ex('csv')">Export CSV</button><button class="b" onclick="ex('json')">Export JSON</button><button class="b bp" onclick="go('fill','${f.id}')">＋ Collecter</button></div>`;
 if(m!='dash')h+=`<div class="row">${q.map(x=>`<button class="chip ${f.v.cols.includes(x.id)?'on':''}" onclick="tc('${x.id}')">${esc(x.label.slice(0,28))}</button>`).join('')}</div>`;
 if(m=='dash'){h+=`<div class="kp" style="margin-top:10px"><div><b>${rows.length}</b><span class="mu">Réponses</span></div><div><b>${rows.filter(r=>new Date(r.ts).toDateString()==today).length}</b><span class="mu">Aujourd’hui</span></div><div><b>${rows[0]?new Date(rows[0].ts).toLocaleDateString('fr-FR'):'–'}</b><span class="mu">Dernière</span></div></div>`;
+=======
+<div class="row">${[[0,'Tout'],[7,'7 j'],[30,'30 j']].map(([d,l])=>`<button class="chip ${(V.rg||0)==d?'on':''}" onclick="V.rg=${d};render()">${l}</button>`).join('')}<button class="b" onclick="ex('csv')">Export CSV</button>${m=='dash'?`<button class="b ${V.ed?'bp':''}" onclick="V.ed=!V.ed;render()">${V.ed?'✓ Terminer':'⚙ Personnaliser'}</button>`:''}<button class="b" onclick="ex('json')">Export JSON</button><button class="b bp" onclick="go('fill','${f.id}')">＋ Collecter</button></div>`;
+if(m!='dash')h+=`<div class="row">${q.map(x=>`<button class="chip ${f.v.cols.includes(x.id)?'on':''}" onclick="tc('${x.id}')">${esc(x.label.slice(0,28))}</button>`).join('')}</div>`;
+if(m=='dash'){h+=dash(f,rows,q)}else if(m=='x'){h+=`<div class="kp" style="margin-top:10px"><div><b>${rows.length}</b><span class="mu">Réponses</span></div><div><b>${rows.filter(r=>new Date(r.ts).toDateString()==today).length}</b><span class="mu">Aujourd’hui</span></div><div><b>${rows[0]?new Date(rows[0].ts).toLocaleDateString('fr-FR'):'–'}</b><span class="mu">Dernière</span></div></div>`;
+>>>>>>> 8aebc0d (Mise a jour du projet et de l'application Android)
 q.filter(x=>/^select/.test(x.type)).forEach(x=>{const c={};x.options.forEach(o=>c[o]=0);rows.forEach(r=>[].concat(r.d[x.id]||[]).forEach(o=>c[o]=(c[o]||0)+1));const e=Object.entries(c).sort((a,b)=>b[1]-a[1]),mx=Math.max(1,...e.map(a=>a[1]));
 h+=`<div class="c"><b>${esc(x.label)}</b>${e.map(([o,n])=>`<div class="bar" style="${n?'':'opacity:.45'}"><span>${esc(o)}</span><div class="tr"><div class="fl" style="width:${n/mx*100}%"></div></div><b>${n}</b></div>`).join('')}</div>`});
 q.filter(x=>x.type=='number').forEach(x=>{const v=rows.map(r=>parseFloat(r.d[x.id])).filter(n=>!isNaN(n)),s=v.reduce((a,b)=>a+b,0);h+=`<div class="c"><b>${esc(x.label)}</b><div class="mu">Somme ${s} · Moyenne ${v.length?(s/v.length).toFixed(1):'–'} · n=${v.length}</div></div>`})}
@@ -112,6 +147,25 @@ if(!rows.length)h+=`<p class="mu">Aucune réponse pour l’instant.</p>`;
 else if(m=='table')h+=`<div class="c" style="overflow-x:auto;padding:0"><table><tr><th>Date</th>${cs.map(x=>`<th>${esc(x.label)}</th>`).join('')}<th></th></tr>${rows.map(r=>`<tr><td>${new Date(r.ts).toLocaleDateString('fr-FR')}</td>${cs.map(x=>`<td>${esc(val(x,r.d))}</td>`).join('')}<td><button class="chip" onclick="ds('${r.id}')">✕</button></td></tr>`).join('')}</table></div>`;
 else h+=rows.map(r=>`<div class="c" style="border-left:6px solid var(--ac)"><div class="mu">${new Date(r.ts).toLocaleString('fr-FR')} <button class="chip" onclick="ds('${r.id}')">Supprimer</button></div>${cs.filter(x=>!empty(r.d[x.id])).map(x=>`<div><span class="mu">${esc(x.label)}</span><br><b>${esc(val(x,r.d))}</b></div>`).join('')}</div>`).join('')}
 return h}
+<<<<<<< HEAD
+=======
+function dash(f,rows,q){const v=f.v;if(!v.w){v.w=[{id:uid(),k:'kpi',t:'Synthèse',s:'full'},{id:uid(),k:'time',t:'Réponses par jour',s:'full'}].concat(q.filter(x=>/^select/.test(x.type)||x.type=='number').map(x=>{const L=x.options.length>6;return{id:uid(),k:x.type=='number'?'num':(L?'bar':'donut'),q:x.id,t:x.label,s:L?'full':'half'}}));save()}
+return `<div class="gr" style="margin-top:10px">`+v.w.map((w,i)=>`<div class="c ${w.s=='full'?'full':''}" style="margin:0">${V.ed?ctl(w,i):''}<b>${esc(w.t)}</b>${wbody(w,rows,q)}</div>`).join('')+`</div>`+(V.ed?`<div class="c"><b>Ajouter un widget</b><div class="row"><select id="nw">${q.map(x=>`<option value="${x.id}">${esc(x.label.slice(0,45))}</option>`).join('')}</select></div><div class="row"><button class="b bp" onclick="aw()">＋ Question</button><button class="b" onclick="aw('kpi')">＋ Synthèse</button><button class="b" onclick="aw('time')">＋ Chronologie</button></div></div>`:'')}
+function ctl(w,i){return `<div class="row" style="margin:0 0 8px"><select style="flex:1" onchange="wc(${i},'k',this.value)">${[['bar','Barres'],['donut','Anneau'],['num','Chiffres'],['kpi','Synthèse'],['time','Chronologie']].map(([k,l])=>`<option value="${k}" ${w.k==k?'selected':''}>${l}</option>`).join('')}</select><select onchange="wc(${i},'s',this.value)"><option value="half" ${w.s=='half'?'selected':''}>½ largeur</option><option value="full" ${w.s=='full'?'selected':''}>Pleine</option></select><input type="color" value="${w.c||F(V.f).color}" onchange="wc(${i},'c',this.value)"><button class="b" onclick="wm(${i},-1)">↑</button><button class="b" onclick="wm(${i},1)">↓</button><button class="b bd" onclick="wx(${i})">✕</button></div><input value="${esc(w.t)}" onchange="wc(${i},'t',this.value)" style="margin-bottom:6px">`}
+function wbody(w,rows,q){const f=F(V.f),x=q.find(a=>a.id==w.q),c0=w.c||f.color,P=[c0,'#f59e0b','#8b5cf6','#ec4899','#10b981','#ef4444','#06b6d4','#84cc16'],td=new Date().toDateString(),st=(l,n)=>`<div><b style="color:${c0}">${n}</b><span class="mu">${l}</span></div>`;
+if(w.k=='kpi')return `<div class="kp" style="margin-top:8px">${st('Réponses',rows.length)+st('Aujourd’hui',rows.filter(r=>new Date(r.ts).toDateString()==td).length)+st('7 derniers jours',rows.filter(r=>r.ts>Date.now()-6048e5).length)}</div>`;
+if(w.k=='time'){const c={};rows.forEach(r=>{const k=new Date(r.ts).toISOString().slice(0,10);c[k]=(c[k]||0)+1});const e=Object.entries(c).sort().slice(-14),mx=Math.max(1,...e.map(a=>a[1]));return e.length?`<div style="display:flex;align-items:flex-end;gap:4px;height:110px;margin-top:8px">${e.map(([d,n])=>`<div style="flex:1;text-align:center;font-size:10px"><div style="height:${n/mx*80}px;background:${c0};border-radius:4px 4px 0 0"></div>${d.slice(8)}</div>`).join('')}</div>`:'<div class="mu">Aucune donnée</div>'}
+if(!x)return '';
+if(x.type=='number'){const n=rows.map(r=>parseFloat(r.d[x.id])).filter(a=>!isNaN(a)),s=n.reduce((a,b)=>a+b,0);return `<div class="kp" style="margin-top:8px">${st('Somme',s)+st('Moyenne',n.length?+(s/n.length).toFixed(1):'–')+st('Max',n.length?Math.max(...n):'–')}</div>`}
+if(!/^select/.test(x.type)){const l=rows.map(r=>val(x,r.d)).filter(Boolean).slice(0,5);return `<div class="mu" style="margin-top:6px">${l.map(a=>'• '+esc(a)).join('<br>')||'Aucune donnée'}</div>`}
+const c={};x.options.forEach(o=>c[o]=0);rows.forEach(r=>[].concat(r.d[x.id]||[]).forEach(o=>c[o]=(c[o]||0)+1));const e=Object.entries(c).sort((a,b)=>b[1]-a[1]),mx=Math.max(1,e[0]?e[0][1]:1),tot=e.reduce((a,b)=>a+b[1],0)||1;
+if(w.k=='donut'){let z=0;const g=e.map(([o,n],i)=>{const s0=z;z+=n/tot*100;return n?`${P[i%8]} ${s0}% ${z}%`:''}).filter(Boolean).join(',');return `<div class="row" style="flex-wrap:nowrap"><div class="dn" style="background:conic-gradient(${g||'var(--bd) 0 100%'})"></div><div class="lg">${e.map(([o,n],i)=>`<div style="${n?'':'opacity:.45'}"><span style="background:${P[i%8]}"></span>${esc(o)} · <b>${n}</b> (${Math.round(n/tot*100)}%)</div>`).join('')}</div></div>`}
+return e.map(([o,n])=>`<div class="bar" style="${n?'':'opacity:.45'}"><span>${esc(o)}</span><div class="tr"><div class="fl" style="width:${n/mx*100}%;background:${c0}"></div></div><b>${n}</b></div>`).join('')}
+function wc(i,k,v){F(V.f).v.w[i][k]=v;save();render()}
+function wm(i,d){const a=F(V.f).v.w,j=i+d;if(j<0||j>=a.length)return;[a[i],a[j]]=[a[j],a[i]];save();render()}
+function wx(i){F(V.f).v.w.splice(i,1);save();render()}
+function aw(k){const f=F(V.f),x=f.fields.find(a=>a.id==($('#nw')||{}).value);if(!k&&!x)return;f.v.w.push(k?{id:uid(),k,t:k=='kpi'?'Synthèse':'Chronologie',s:'full'}:{id:uid(),k:x.type=='number'?'num':'bar',q:x.id,t:x.label,s:'half'});save();render()}
+>>>>>>> 8aebc0d (Mise a jour du projet et de l'application Android)
 function vm(k){F(V.f).v.m=k;save();render()}
 function tc(id){const c=F(V.f).v.cols,i=c.indexOf(id);i<0?c.push(id):c.splice(i,1);save();render()}
 function ds(id){if(confirm('Supprimer cette réponse ?')){S.subs=S.subs.filter(s=>s.id!=id);save();render()}}
